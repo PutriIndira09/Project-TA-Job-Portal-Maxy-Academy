@@ -430,7 +430,7 @@
                                     </div>
                                 </div>
                                 <input type="file" class="form-control" name="profile_image" id="profile_image"
-                                    accept="image/*" style="width: auto;">
+                                    accept="image/*" style="width: 100;">
                             </div>
                             <small class="text-white">Format: JPG, PNG (max 2MB)</small>
                             @error('profile_image')

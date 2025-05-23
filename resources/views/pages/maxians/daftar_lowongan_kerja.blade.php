@@ -161,8 +161,8 @@
                                                 <div class="d-flex align-items-start">
                                                     <div class="me-3 img-items-top">
                                                         <img src="{{ asset($lowongan->logo_perusahaan ?? 'path/to/default/logo.png') }}"
-                                                            alt="Logo {{ $lowongan->nama_perusahaan }}" width="60"
-                                                            height="60" class="img-fluid rounded-circle">
+                                                            alt="Logo {{ $lowongan->nama_perusahaan }}" width="300"
+                                                            height="300" class="img-fluid rounded-circle">
                                                     </div>
                                                     <div>
                                                         <h4 class="card-title mb-0">

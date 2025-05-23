@@ -80,7 +80,7 @@
                                 @endif
                             </td>
                             <td class="sub-heading text-center">{{ $lowongan->nama_perusahaan }}</td>
-                            <td class="sub-heading text-center">{{ $lowongan->alamat }}</td>
+                            <td class="sub-heading text-center description-column">{{ $lowongan->alamat }}</td>
                             <td class="sub-heading text-center">{{ $lowongan->email }}</td>
                             <td class="sub-heading text-center">{{ $lowongan->nomor_telepon }}</td>
                             {{-- <td class="sub-heading text-center">{{ $lowongan->deskripsi_pekerjaan }}</td> --}}
@@ -91,12 +91,14 @@
                                     <span class="text-muted">Tidak ada deskripsi</span>
                                 @endif
                             </td> --}}
-                            <td class="sub-heading text-center">
-                                @if ($lowongan->deskripsi_pekerjaan)
-                                    <span>{{ $lowongan->deskripsi_pekerjaan }}</span>
-                                @else
-                                    <span class="text-muted">Tidak ada deskripsi</span>
-                                @endif
+                            <td class="sub-heading text-center description-column">
+                                <div style="max-height: 150px; overflow-y: auto; padding: 5px;">
+                                    @if ($lowongan->deskripsi_pekerjaan)
+                                        <span>{{ $lowongan->deskripsi_pekerjaan }}</span>
+                                    @else
+                                        <span class="text-muted">Tidak ada deskripsi</span>
+                                    @endif
+                                </div>
                             </td>
                             <td class="sub-heading text-center">{{ $lowongan->jenis_kontrak }}</td>
                             <td class="sub-heading text-center">{{ $lowongan->lokasi }}</td>

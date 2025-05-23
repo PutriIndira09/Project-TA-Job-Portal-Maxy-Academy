@@ -20,7 +20,7 @@
                     <li><a class="dropdown-item" href="#" data-column="0">No.</a></li>
                     <li><a class="dropdown-item" href="#" data-column="1">Nama Kategori Pekerjaan</a></li>
                     <li><a class="dropdown-item" href="#" data-column="2">Nama Tag Pekerjaan</a></li>
-                    <li><a class="dropdown-item" href="#" data-column="3">Deskripsi Pekerjaan</a></li>
+                    <li><a class="dropdown-item" href="#" data-column="3">Deskripsi Kategori Pekerjaan</a></li>
                     <li><a class="dropdown-item" href="#" data-column="4">Action</a></li>
                 </ul>
             </div>
@@ -35,7 +35,7 @@
                         <th class="heading text-center fw-bold">No.</th>
                         <th class="heading text-center fw-bold">Nama Kategori Pekerjaan</th>
                         <th class="heading text-center fw-bold">Nama Tag Pekerjaan</th>
-                        <th class="heading text-center fw-bold">Deskripsi Pekerjaan</th>
+                        <th class="heading text-center fw-bold">Deskripsi Kategori Pekerjaan</th>
                         <th class="heading text-center fw-bold">Action</th>
                     </tr>
                 </thead>
@@ -59,7 +59,11 @@
                                 {{ $kategori->tags->nama_tag }}
                             @else
                             @endif --}}
-                            <td class="sub-heading text-center">{{ $kategori->deskripsi }}</td>
+                            <td class="sub-heading text-center description-column">
+                                <div style="max-height: 150px; overflow-y: auto; padding: 5px;">
+                                    {{ $kategori->deskripsi }}
+                                </div>
+                            </td>
                             <td class="text-center">
                                 <div class="d-flex justify-content-center gap-2">
                                     <form action="{{ route('add_kategori_lowongan_kerja') }}">

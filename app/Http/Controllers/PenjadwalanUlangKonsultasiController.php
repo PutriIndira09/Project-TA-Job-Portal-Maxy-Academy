@@ -19,6 +19,7 @@ class PenjadwalanUlangKonsultasiController extends Controller
             'jam_baru',
             'alasan',
         ])
+
             ->orderBy('tanggal', 'asc')
             ->orderBy('jam', 'asc')
             ->get();

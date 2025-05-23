@@ -80,8 +80,8 @@
 
             <div>
                 <button type="button" class="btn btn-create rounded-5"
-                    onclick="window.location='{{ route('riwayat_pengajuan_jadwal_konsultasi') }}'">Lihat Riwayat
-                    Pengajuan <i class="fa-solid fa-arrow-right ms-3"></i></button>
+                    onclick="window.location='{{ route('riwayat_pengajuan_jadwal_konsultasi') }}'">Lihat riwayat
+                    pengajuan <i class="fa-solid fa-arrow-right ms-3"></i></button>
             </div>
         </div>
     </div>

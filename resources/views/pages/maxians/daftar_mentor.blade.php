@@ -47,7 +47,7 @@
                         <h5 class="card-title">Isaac Munandar</h5>
                         <p class="card-text">Chief Executive Office</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-link d-flex justify-content-start">
+                            <a href="https://www.linkedin.com/in/isaacmunandar/" class="btn btn-link d-flex justify-content-start">
                                 <i class="fa-brands fa-linkedin linkedin-icon"></i>
                             </a>
                         </div>
@@ -62,7 +62,7 @@
                         <h5 class="card-title">Stefen Laksana</h5>
                         <p class="card-text">VP of Product Delivery</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-link d-flex justify-content-start">
+                            <a href="https://www.linkedin.com/in/stefenlaksana/" class="btn btn-link d-flex justify-content-start">
                                 <i class="fa-brands fa-linkedin linkedin-icon"></i>
                             </a>
                         </div>
@@ -76,7 +76,7 @@
                         <h5 class="card-title">Andy Febrico B.</h5>
                         <p class="card-text">Chief Technology Office</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-link d-flex justify-content-start">
+                            <a href="https://www.linkedin.com/in/andytoro/" class="btn btn-link d-flex justify-content-start">
                                 <i class="fa-brands fa-linkedin linkedin-icon"></i>
                             </a>
                         </div>
@@ -90,7 +90,7 @@
                         <h5 class="card-title">William Wibisono</h5>
                         <p class="card-text">Operational Manager</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-link d-flex justify-content-start">
+                            <a href="https://www.linkedin.com/in/william-ch/" class="btn btn-link d-flex justify-content-start">
                                 <i class="fa-brands fa-linkedin linkedin-icon"></i>
                             </a>
                         </div>
@@ -109,7 +109,7 @@
                         <h5 class="card-title">Ika Noviani</h5>
                         <p class="card-text">Operational Manager</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-link d-flex justify-content-start">
+                            <a href="https://www.linkedin.com/in/ika-pratiwi-4030a72b/" class="btn btn-link d-flex justify-content-start">
                                 <i class="fa-brands fa-linkedin linkedin-icon"></i>
                             </a>
                         </div>
@@ -123,7 +123,7 @@
                         <h5 class="card-title">Sydney Rosalind</h5>
                         <p class="card-text">Operational Manager</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-link d-flex justify-content-start">
+                            <a href="https://www.linkedin.com/in/sydney-rosalind/" class="btn btn-link d-flex justify-content-start">
                                 <i class="fa-brands fa-linkedin linkedin-icon"></i>
                             </a>
                         </div>
@@ -137,7 +137,7 @@
                         <h5 class="card-title">Jessica Charisma</h5>
                         <p class="card-text">Operational Manager</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-link d-flex justify-content-start">
+                            <a href="https://www.linkedin.com/in/jessicacharisma/" class="btn btn-link d-flex justify-content-start">
                                 <i class="fa-brands fa-linkedin linkedin-icon"></i>
                             </a>
                         </div>
@@ -151,7 +151,7 @@
                         <h5 class="card-title">Indana Nazulfa</h5>
                         <p class="card-text">Operational Manager</p>
                         <div class="mt-auto">
-                            <a href="#" class="btn btn-link d-flex justify-content-start">
+                            <a href="https://www.linkedin.com/in/indana-nazulfa-942933188/" class="btn btn-link d-flex justify-content-start">
                                 <i class="fa-brands fa-linkedin linkedin-icon"></i>
                             </a>
                         </div>

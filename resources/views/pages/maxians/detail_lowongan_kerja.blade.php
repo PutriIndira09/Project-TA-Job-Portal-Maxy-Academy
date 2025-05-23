@@ -25,9 +25,9 @@
                                 <h4 class="description fw-bold m-0 p-3 ps-0">Deskripsi Pekerjaan</h4>
                             </div>
 
-                            <h5 class="description-job lh-base mb-5 text-justify">
-                                {!! nl2br(e($lowongan->deskripsi_pekerjaan)) !!}
-                            </h5>
+                            <div class="description-job lh-base mb-5 text-justify" style="white-space: pre-line;">
+                                {!! $lowongan->deskripsi_pekerjaan !!}
+                            </div>
                         </div>
 
                         <div class="d-flex align-items-center">
@@ -86,9 +86,11 @@
                                         <form method="POST" action="{{ route('melamar', $lowongan->id_lowongan) }}"
                                             id="applicationForm">
                                             @csrf
-                                            <button type="submit" id="applyButton" class="btn btn-primary rounded-5 mt-4">
-                                                Melamar Pekerjaan <i class="fa-solid fa-arrow-right ms-3"></i>
-                                            </button>
+                                            <div class="text-center">
+                                                <button type="submit" id="applyButton" class="btn btn-primary rounded-5 mt-4">
+                                                    Ajukan lamaran <i class="fa-solid fa-arrow-right ms-3"></i>
+                                                </button>
+                                            </div>
                                         </form>
                                     @else
                                         <p>Silakan <a href="{{ route('login') }}">login</a> untuk melamar pekerjaan.</p>

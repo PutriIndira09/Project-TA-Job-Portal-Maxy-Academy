@@ -5,15 +5,15 @@
         <!-- Section Hero Banner -->
         <div class="row hero-section">
             <!-- Text pada Hero Banner -->
-            <div class="col-lg-6 d-flex flex-column justify-content-center hero-text-container">
-                <h1 class="hero-text text-nowrap">
+            <div class="col-lg-6 d-flex flex-column justify-content-center title-text-container">
+                <h1 class="title-text text-nowrap">
                     Yuk Raih Peluang
                 </h1>
-                <h1 class="hero-text text-nowrap">
+                <h1 class="title-text text-nowrap">
                     Karirmu Bersama
                 </h1>
 
-                <h1 class="hero-text custom-text text-uppercase text-center">
+                <h1 class="title-text custom-text text-uppercase text-center">
                     MAXY ACADEMY
                     <span class="top-right"></span>
                     <span class="bottom-left"></span>
@@ -26,7 +26,7 @@
                 <!-- Search Bar -->
                 <div class="mt-5">
                     <a type="button" href="{{ route('daftar_lowongan_kerja') }}" class="btn btn-primary rounded-5">Yuk cari
-                        peluang kerja kamu disini! <i class="fa-solid fa-arrow-right ms-3"></i></a>
+                        peluang kerjamu disini! <i class="fa-solid fa-arrow-right ms-3"></i></a>
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
             </div>
 
             <!-- Alur Melamar Pekerjaan-->
-            <div class="mt-0">
+            <div id="alur-melamar" class="mt-0">
                 <img src="{{ asset('images/alur melamar pekerjaan.png') }} "
                     class="image-workflow w-100 h-100 object-fit-cover" alt="Maxy Academy Image">
             </div>
@@ -44,7 +44,7 @@
 
         <!-- Section Owl Carousel Partner Maxy Academy -->
         <!-- Baris Ke-1 -->
-        <div class="mt-5">
+        <div id="mitra" class="mt-5">
             <div class="owl-carousel owl-theme" id="carousel-row1">
                 <div class="item">
                     <img src="{{ asset('images/skintific.png') }}" alt="SKINTIFIC" class="logo-img">
@@ -128,7 +128,7 @@
         </div>
 
         <!-- Section Alur Konsultasi Karir -->
-        <div class="mt-5 p-0">
+        <div id="alur-konsultasi-karir" class="mt-5 p-0">
             <div class="row align-items-center">
                 <!-- Image Section -->
                 <div class="col-lg-6 px-3 position-relative">
@@ -212,7 +212,7 @@
 
         <!-- Section CTA Konsultasi Karir -->
         <div class="row hero-section mt-5">
-            <div class="col-lg-6 d-flex flex-column justify-content-center hero-text-container">
+            <div class="col-lg-6 d-flex flex-column justify-content-center title-text-container">
                 <h1 class="heading mb-3">
                     <span class="text-dark">Bersama Mentor Tepat, </span><span class="text-primary">Kesuksesan Lebih
                         Dekat!</span>
@@ -225,7 +225,7 @@
                 <h5 class="mt-5">
                     <a href="{{ route('daftar_mentor') }}" class="btn btn-primary rounded-5 custom-btn"
                         style="width: 250px;" role="button">
-                        Konsultasi Sekarang <i class="fa-solid fa-arrow-right ms-3"></i>
+                        Konsultasi sekarang <i class="fa-solid fa-arrow-right ms-3"></i>
                     </a>
                 </h5>
             </div>
@@ -247,7 +247,7 @@
         </div>
 
         <!-- Section Benefit Konsultasi Karir -->
-        <div class="col-lg-12 mt-5">
+        <div id="benefit-konsultasi-karir" class="col-lg-12 mt-5">
             <h1 class="heading">
                 <span class="text-primary">Benefit </span><span class="text-dark">yang Akan Kamu Dapatkan Jika Kamu
                     Mengikuti</span>
@@ -322,7 +322,7 @@
         </div>
 
         <!-- Section FAQ -->
-        <div class="col-lg-12">
+        <div id="FAQ" class="col-lg-12">
             <h1 class="heading">
                 <span class="text-dark">Temukan Jawaban untuk Memulai Karir Anda Bersama </span><span
                     class="text-primary">Maxy
@@ -454,21 +454,6 @@
     </div>
     </div>
 @endsection
-
-<!-- Owl Carousel CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-<link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
-<!-- Add Font Awesome CDN in your head section -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
-
-<!-- Owl Carousel JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<!-- Bootstrap JS and Popper.js -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
 
 <script>

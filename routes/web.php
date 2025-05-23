@@ -82,6 +82,7 @@ Route::middleware(['auth', 'inactivity'])->group(function () {
         } elseif (Auth::user()->role == 'maxians') {
             return redirect('/maxians');
         }
+        return redirect()->route('login'); // Redirect ke halaman login
     });
 
     // Logout inactive
@@ -102,11 +103,11 @@ Route::post('forgot-password', [PasswordController::class, 'sendResetLinkEmail']
 Route::get('reset-password/{token}', [PasswordController::class, 'showResetForm'])->name('password.reset');
 
 // Mengubah password pengguna
-Route::post('reset-password', [PasswordController::class, 'reset'])->name('password.update');
+// Route::post('reset-password', [PasswordController::class, 'reset'])->name('password.update');
 
 // Ganti password di halaman profil pengguna
 Route::get('change-password', [PasswordController::class, 'showChangePasswordForm'])->name('password.change');
-Route::post('change-password', [PasswordController::class, 'updatePassword'])->name('password.update');
+// Route::post('change-password', [PasswordController::class, 'updatePassword'])->name('password.update');
 
 
 

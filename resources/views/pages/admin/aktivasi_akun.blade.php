@@ -67,7 +67,7 @@
                                 @endif
                             </td>
                             <td class="sub-heading text-center">{{ $account->email }}</td>
-                            <td class="sub-heading text-center">{{ $account->name }}</td>
+                            <td class="sub-heading text-center">{{ $account->user_name ?? $account->name }}</td>
                             {{-- <td class="sub-heading text-center">
                                 <div class="password-field">
                                     <span class="password-asterisks">********</span>

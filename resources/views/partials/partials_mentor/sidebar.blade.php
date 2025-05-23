@@ -19,31 +19,31 @@
                 <li class="nav-item">
                     <a href="{{ route('atur_jadwal_konsultasi') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-calendar-days"></i>
-                        <p>Atur Jadwal Konsultasi</p>
+                        <p>Buat Jadwal</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('cek_ketersediaan_jadwal') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-list"></i>
-                        <p>Cek Ketersediaan Jadwal</p>
+                        <p>Cek Jadwal</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('penjadwalan_ulang_konsultasi') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-calendar-days"></i>
-                        <p>Penjadwalan Ulang Konsultasi</p>
+                        <p>Reschedule</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('kelola_permintaan_jadwal') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-code-pull-request"></i>
-                        <p>Kelola Permintaan Jadwal</p>
+                        <p>Kelola Jadwal</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('laporan_hasil_konsultasi_mentor') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-file-contract"></i>
-                        <p>Laporan Hasil Konsultasi</p>
+                        <p>Laporan Konsultasi</p>
                     </a>
                 </li>
             </ul>
@@ -53,5 +53,3 @@
     <!--end::Sidebar Wrapper-->
 </aside>
 <!--end::Sidebar-->
-
-

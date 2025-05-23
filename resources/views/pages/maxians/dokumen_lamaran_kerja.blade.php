@@ -95,8 +95,8 @@
                             </div>
                             <div>
                                 <button type="button" class="btn btn-create rounded-5"
-                                    onclick="window.location='{{ route('dokumen_lamaran_hasil') }}'">Lihat Hasil
-                                    Dokumen <i class="fa-solid fa-arrow-right ms-3"></i></button>
+                                    onclick="window.location='{{ route('dokumen_lamaran_hasil') }}'">Lihat hasil
+                                    dokumen <i class="fa-solid fa-arrow-right ms-3"></i></button>
                             </div>
                         </div>
                         <div>

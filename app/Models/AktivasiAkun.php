@@ -34,4 +34,9 @@ class AktivasiAkun extends Authenticatable
         'last_login' => 'datetime',
         'is_active' => 'boolean'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'email', 'email');
+    }
 }

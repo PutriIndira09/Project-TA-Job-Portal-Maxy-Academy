@@ -103,8 +103,8 @@ body.dark-mode .btn {
 }
 
 body {
-            font-family: 'Poppins', sans-serif;
-        }
+    font-family: "Poppins", sans-serif;
+}
 
 .custom-border {
     border: 1px solid #8c939d !important;
@@ -1038,17 +1038,21 @@ button:focus {
 }
 
 .btn-info {
-    background-color: #056CF2; /* Mengatur warna latar belakang tombol */
-    color: #FFFFFF; /* Mengatur warna teks tombol menjadi putih */
+    background-color: #056cf2; /* Mengatur warna latar belakang tombol */
+    color: #ffffff; /* Mengatur warna teks tombol menjadi putih */
     border: none !important;
 }
 
 .btn-info i {
-    color: #FFFFFF; /* Mengatur warna ikon di dalam tombol menjadi putih */
+    color: #ffffff; /* Mengatur warna ikon di dalam tombol menjadi putih */
 }
 
 .btn-info:hover {
-    background-color: #056CF2; /* Mengatur warna latar belakang tombol saat hover */
+    background-color: #056cf2; /* Mengatur warna latar belakang tombol saat hover */
 }
 
-
+.description-column {
+    max-height: 100px; /* Sesuaikan tinggi maksimal */
+    overflow-y: auto; /* Menambahkan scroll vertikal */
+    word-wrap: break-word; /* Memastikan teks tidak melampaui lebar */
+}

@@ -44,9 +44,23 @@
                                     <span class="text-muted">User Tidak Ditemukan</span>
                                 @endif
                             </td>
-                            <td class="sub-heading text-center">{{ $lamaran->lowongan->nama_perusahaan }}</td>
-                            <td class="sub-heading text-center">{{ $lamaran->lowongan->kategoriPekerjaan->nama_kategori }}
+                            {{-- <td class="sub-heading text-center">{{ $lamaran->lowongan->nama_perusahaan }}</td> --}}
+                            <td class="sub-heading text-center">
+                                @if ($lamaran->lowongan)
+                                    {{ $lamaran->lowongan->nama_perusahaan }}
+                                @else
+                                    <span class="text-muted">Perusahaan tidak tersedia</span>
+                                @endif
                             </td>
+                            {{-- <td class="sub-heading text-center">{{ $lamaran->lowongan->kategoriPekerjaan->nama_kategori }}
+                            </td> --}}
+                            <td class="sub-heading text-center">
+    @if ($lamaran->lowongan && $lamaran->lowongan->kategoriPekerjaan)
+        {{ $lamaran->lowongan->kategoriPekerjaan->nama_kategori }}
+    @else
+        <span class="text-muted">Kategori tidak tersedia</span>
+    @endif
+</td>
                             <td class="sub-heading text-center">{{ $lamaran->created_at->format('d F Y') }}</td>
                             <td style="vertical-align: middle; text-align: center;">
                                 <span

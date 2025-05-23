@@ -240,7 +240,7 @@
                         @csrf
 
                         <div class="mx-4 my-4">
-                            <label for="email" class="form-label">Email Address</label>
+                            <label for="email" class="form-label">Email</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror"
@@ -288,10 +288,10 @@
                 </div>
 
                 <div class="text-center mx-4 my-4">
-                    <p class="mb-0">Silahkan hubungi Admin jika anda mengalami kendala
+                    <p class="mb-0">Silahkan hubungi Admin jika Anda mengalami kendala
                         <a href="https://api.whatsapp.com/send/?phone=628113955599&text=Hi+Maxy+Academy%21+Mau+nanya-nanya+dong..%0D%0A%0D%0ANama%3A%0D%0AEmail%3A%0D%0AUniversitas%3A%0D%0ASemester%3A%0D%0AJurusan%3A%0D%0A%0D%0AThank+you%21&type=phone_number&app_absent=0"
                             class="text-decoration-none" target="_blank">
-                            <i class="fab fa-whatsapp me-1"></i> Contact admin
+                            <i class="fab fa-whatsapp me-1"></i> Contact Admin
                         </a>
                     </p>
                 </div>

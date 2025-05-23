@@ -29,7 +29,7 @@
             <div class="row">
                 <!-- Kolom Kiri -->
                 <div class="col-md-6">
-                    <!-- Logo Perusahaan Input -->
+                    <!-- Logo Perusahaan -->
                     <div class="mb-3">
                         <label for="logo_perusahaan" class="heading text-center fw-bold mb-3">Logo Perusahaan</label>
                         <div class="d-flex align-items-center">
@@ -43,12 +43,12 @@
                                 @endif
                             </div>
                             <input type="file" class="form-control custom-border" name="logo_perusahaan"
-                                id="logo_perusahaan" accept="image/jpeg,image/png">
+                                id="logo_perusahaan" accept="image/jpeg,image/png" onchange="previewImage(this)">
                         </div>
                         <small class="text-muted">Format: JPG, PNG (max 2MB)</small>
                     </div>
 
-                    <!-- Kategori Pekerjaan Input -->
+                    <!-- Kategori Pekerjaan -->
                     <div class="mb-3">
                         <label for="nama_kategori" class="heading text-center fw-bold mb-3">Kategori Pekerjaan</label>
                         <select class="form-select custom-border" name="nama_kategori" required>
@@ -90,11 +90,11 @@
                             value="{{ old('nomor_telepon', $lowongan->nomor_telepon) }}" required>
                     </div>
 
-                    <!-- Deskripsi Pekerjaan Input -->
                     <div class="mb-3">
                         <label for="deskripsi_pekerjaan" class="heading text-center fw-bold mb-3">Deskripsi
                             Pekerjaan</label>
-                        <textarea class="form-control custom-border" name="deskripsi_pekerjaan" rows="4" required>{{ old('deskripsi_pekerjaan', $lowongan->deskripsi_pekerjaan) }}</textarea>
+                        <textarea class="form-control custom-border" id="deskripsi_pekerjaan" name="deskripsi_pekerjaan" rows="4"
+                            required>{{ old('deskripsi_pekerjaan', $lowongan->deskripsi_pekerjaan) }}</textarea>
                     </div>
                 </div>
 
@@ -274,6 +274,67 @@
                 const label = document.querySelector('label[for="is_active"]');
                 label.textContent = this.checked ? 'Aktif' : 'Nonaktif';
             });
+        </script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#deskripsi_pekerjaan'), {
+                    toolbar: {
+                        items: [
+                            'heading',
+                            '|',
+                            'bold', 'italic', 'underline', 'strikethrough',
+                            '|',
+                            'alignment',
+                            '|',
+                            'bulletedList', 'numberedList',
+                            '|',
+                            'outdent', 'indent',
+                            '|',
+                            'link', 'imageUpload',
+                            '|',
+                            'undo', 'redo'
+                        ]
+                    },
+                    alignment: {
+                        options: ['left', 'right', 'center', 'justify']
+                    },
+                    heading: {
+                        options: [{
+                                model: 'paragraph',
+                                title: 'Paragraph',
+                                class: 'ck-heading_paragraph'
+                            },
+                            {
+                                model: 'heading2',
+                                view: 'h2',
+                                title: 'Heading',
+                                class: 'ck-heading_heading2'
+                            }
+                        ]
+                    },
+                    height: 300,
+                    placeholder: 'Masukkan deskripsi pekerjaan disini...'
+                })
+                .then(editor => {
+                    console.log('Editor was initialized', editor);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
+            function previewImage(input) {
+                const preview = document.getElementById('imagePreview');
+                if (input.files && input.files[0]) {
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        preview.src = e.target.result;
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
         </script>
     @endpush
 @endsection

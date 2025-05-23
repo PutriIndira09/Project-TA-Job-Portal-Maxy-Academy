@@ -275,7 +275,7 @@
             <div class="col-md-4">
                 <div class="card border-0 rounded-4 shadow-sm mb-4">
                     <div class="card-header bg-white border-0 pt-4 pb-2 px-4">
-                        <h5 class="heading-5 mb-0 fw-bold text-center">Konsultasi Karir</h5>
+                        <h5 class="heading-5 mb-0 fw-bold text-center">Total Konsultasi Karir</h5>
                     </div>
                     <div class="card-header bg-white border-0 pt-2 pb-2 mt-3 px-3 d-flex flex-column align-items-center"
                         style="height: 65px; padding-bottom: 0;">

@@ -114,5 +114,27 @@
                 }
             });
         </script>
+        <!-- Gunakan CKEditor 5 (versi terbaru) -->
+        <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
+
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#deskripsi'), {
+                    toolbar: {
+                        items: [
+                            'bold', 'italic', 'underline', 'strikethrough',
+                            'alignment',
+                            'bulletedList', 'numberedList',
+                            'outdent', 'indent',
+                            'link', 'imageUpload',
+                            'undo', 'redo'
+                        ]
+                    },
+                    height: 300
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        </script>
     @endpush
 @endsection

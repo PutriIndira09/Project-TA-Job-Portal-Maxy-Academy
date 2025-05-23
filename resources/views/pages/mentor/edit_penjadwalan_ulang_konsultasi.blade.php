@@ -75,8 +75,8 @@
 
             <!-- Action Buttons -->
             <div class="d-flex justify-content-between mt-4">
-                <button type="button" onclick="window.location.href='{{ route('penjadwalan_ulang_konsultasi') }}'" 
-                        class="btn btn-back rounded-pill px-4">Kembali</button>
+                <button type="button" onclick="window.location.href='{{ route('penjadwalan_ulang_konsultasi') }}'"
+                    class="btn btn-back rounded-pill px-4">Kembali</button>
                 <button type="submit" class="btn btn-primary rounded-pill px-4">Perbarui</button>
             </div>
         </form>

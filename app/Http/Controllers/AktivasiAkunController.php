@@ -6,15 +6,22 @@ use App\Models\User;
 use App\Models\AktivasiAkun;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\Rule; // Tambahkan ini
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class AktivasiAkunController extends Controller
 {
     public function index()
     {
-        // Ambil semua data akun dari tabel aktivasi_akun
-        $accounts = AktivasiAkun::whereNotNull('foto_profil') // Hanya tampilkan akun dengan foto profil
-            ->orderBy('created_at', 'desc')
+        // Gabungkan data dari tabel aktivasi_akun dengan tabel users
+        $accounts = DB::table('aktivasi_akun')
+            ->leftJoin('users', 'aktivasi_akun.email', '=', 'users.email')
+            ->select(
+                'aktivasi_akun.*',
+                'users.name as user_name'
+            )
+            ->whereNotNull('aktivasi_akun.foto_profil')
+            ->orderBy('aktivasi_akun.created_at', 'desc')
             ->get();
 
         return view('pages.admin.aktivasi_akun', compact('accounts'));
@@ -22,7 +29,12 @@ class AktivasiAkunController extends Controller
 
     public function create()
     {
-        return view('pages.admin.add_aktivasi_akun');
+        // Ambil daftar user yang belum memiliki akun di aktivasi_akun
+        $availableUsers = User::whereNotIn('email', function($query) {
+            $query->select('email')->from('aktivasi_akun');
+        })->get();
+        
+        return view('pages.admin.add_aktivasi_akun', compact('availableUsers'));
     }
 
     public function store(Request $request)
@@ -32,9 +44,9 @@ class AktivasiAkunController extends Controller
             'email' => [
                 'required',
                 'email',
-                Rule::unique('aktivasi_akun', 'email')->whereNull('deleted_at')
+                Rule::unique('aktivasi_akun', 'email')->whereNull('deleted_at'),
+                Rule::exists('users', 'email')
             ],
-            'name' => 'required|string|max:255',
             'password' => 'required|string|min:8',
             'role' => 'required|in:Mentor,Perusahaan,Maxians',
             'last_login' => 'nullable|date',
@@ -42,19 +54,28 @@ class AktivasiAkunController extends Controller
         ]);
 
         try {
+            // Dapatkan nama dari tabel users berdasarkan email
+            $user = User::where('email', $request->email)->first();
+            
+            if (!$user) {
+                return redirect()->back()
+                    ->with('error', 'Email tidak ditemukan dalam tabel users.')
+                    ->withInput();
+            }
+
             // Handle file upload - simpan ke public/images
             $photoName = time() . '.' . $request->photo->extension();
             $request->photo->move(public_path('photo_profil_users'), $photoName);
 
-            // AktivasiAkun::create([
             $account = AktivasiAkun::create([
                 'foto_profil' => 'photo_profil_users/' . $photoName,
                 'email' => $request->email,
-                'name' => $request->name,
+                'name' => $user->name, // Menggunakan nama dari tabel users
                 'password' => bcrypt($request->password),
                 'role' => $request->role,
                 'last_login' => $request->last_login,
-                'is_active' => $request->boolean('is_active')
+                'is_active' => $request->boolean('is_active'),
+                'status' => 'aktif' // Menambahkan status default
             ]);
 
             return redirect()->route('aktivasi_akun')
@@ -62,7 +83,7 @@ class AktivasiAkunController extends Controller
                 ->with('new_account', $account);
         } catch (\Exception $e) {
             return redirect()->back()
-                ->with('error', 'Gagal menambahkan Akun.' . $e->getMessage())
+                ->with('error', 'Gagal menambahkan Akun. ' . $e->getMessage())
                 ->withInput();
         }
     }
@@ -70,7 +91,11 @@ class AktivasiAkunController extends Controller
     public function edit($id_pengguna)
     {
         $account = AktivasiAkun::findOrFail($id_pengguna);
-        return view('pages.admin.edit_aktivasi_akun', compact('account'));
+        
+        // Cari data user berdasarkan email
+        $user = User::where('email', $account->email)->first();
+        
+        return view('pages.admin.edit_aktivasi_akun', compact('account', 'user'));
     }
 
     public function update(Request $request, $id_pengguna)
@@ -82,9 +107,9 @@ class AktivasiAkunController extends Controller
                 'email',
                 Rule::unique('aktivasi_akun', 'email')
                     ->ignore($id_pengguna, 'id_pengguna')
-                    ->whereNull('deleted_at')
+                    ->whereNull('deleted_at'),
+                Rule::exists('users', 'email')
             ],
-            'name' => 'required|string|max:255',
             'password' => 'nullable|string|min:8',
             'role' => 'required|in:Mentor,Perusahaan,Maxians',
             'last_login' => 'nullable|date',
@@ -93,6 +118,15 @@ class AktivasiAkunController extends Controller
 
         try {
             $account = AktivasiAkun::findOrFail($id_pengguna);
+            
+            // Dapatkan nama dari tabel users berdasarkan email
+            $user = User::where('email', $validatedData['email'])->first();
+            
+            if (!$user) {
+                return redirect()->back()
+                    ->with('error', 'Email tidak ditemukan dalam tabel users.')
+                    ->withInput();
+            }
 
             // Jika akun dinonaktifkan, hapus data dari tabel
             if ($request->is_active == false) {
@@ -103,17 +137,23 @@ class AktivasiAkunController extends Controller
 
             // Jika akun diaktifkan kembali, pulihkan data
             $account->email = $validatedData['email'];
-            $account->name = $validatedData['name'];
+            $account->name = $user->name; // Menggunakan nama dari tabel users
             $account->role = $validatedData['role'];
             $account->last_login = $validatedData['last_login'];
             $account->is_active = (bool)$request->is_active;
+            $account->status = 'aktif';
 
             // Handle photo update
             if ($request->hasFile('photo')) {
-                if ($account->foto_profil && Storage::exists('public/' . $account->foto_profil)) {
-                    Storage::delete('public/' . $account->foto_profil);
+                // Hapus foto lama jika ada
+                if ($account->foto_profil && file_exists(public_path($account->foto_profil))) {
+                    unlink(public_path($account->foto_profil));
                 }
-                $account->foto_profil = $request->file('photo')->store('images', 'public');
+                
+                // Upload foto baru
+                $photoName = time() . '.' . $request->photo->extension();
+                $request->photo->move(public_path('photo_profil_users'), $photoName);
+                $account->foto_profil = 'photo_profil_users/' . $photoName;
             }
 
             // Handle password update

@@ -76,11 +76,12 @@
                             placeholder="Masukkan nomor telepon perusahaan" value="{{ old('nomor_telepon') }}" required>
                     </div>
 
-                    <!-- Deskripsi Pekerjaan Input -->
+                    <!-- Deskripsi Pekerjaan Input with CKEditor 5 -->
                     <div class="mb-3">
                         <label for="deskripsi_pekerjaan" class="heading text-center fw-bold mb-3">Deskripsi
                             Pekerjaan</label>
-                        <textarea class="form-control custom-border" name="deskripsi_pekerjaan" rows="4" required>{{ old('deskripsi_pekerjaan') }}</textarea>
+                        <textarea class="form-control custom-border" id="deskripsi_pekerjaan" name="deskripsi_pekerjaan" rows="4"
+                            required>{{ old('deskripsi_pekerjaan') }}</textarea>
                     </div>
                 </div>
 
@@ -227,6 +228,65 @@
                     reader.readAsDataURL(file);
                 }
             });
+        </script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#deskripsi_pekerjaan'), {
+                    toolbar: {
+                        items: [
+                            'heading',
+                            '|',
+                            'bold', 'italic', 'underline', 'strikethrough',
+                            '|',
+                            'alignment',
+                            '|',
+                            'bulletedList', 'numberedList',
+                            '|',
+                            'outdent', 'indent',
+                            '|',
+                            'link', 'blockQuote', 'imageUpload',
+                            '|',
+                            'undo', 'redo'
+                        ]
+                    },
+                    alignment: {
+                        options: ['left', 'right', 'center', 'justify']
+                    },
+                    heading: {
+                        options: [{
+                                model: 'paragraph',
+                                title: 'Paragraph',
+                                class: 'ck-heading_paragraph'
+                            },
+                            {
+                                model: 'heading2',
+                                view: 'h2',
+                                title: 'Heading 2',
+                                class: 'ck-heading_heading2'
+                            },
+                            {
+                                model: 'heading3',
+                                view: 'h3',
+                                title: 'Heading 3',
+                                class: 'ck-heading_heading3'
+                            }
+                        ]
+                    },
+                    height: 300,
+                    placeholder: 'Masukkan deskripsi pekerjaan secara detail...',
+                    removePlugins: ['Markdown']
+                })
+                .then(editor => {
+                    editor.model.document.on('change:data', () => {
+                        editor.updateSourceElement();
+                    });
+
+                    console.log('CKEditor initialized:', editor);
+                })
+                .catch(error => {
+                    console.error('CKEditor initialization error:', error);
+                });
         </script>
     @endpush
 @endsection

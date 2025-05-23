@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/maxians.css') }}">
-    <link href="{{ asset('css/maxians.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Tambahkan di head -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -132,11 +133,11 @@
                     <div class="footer-section">
                         <h5>Menu</h5>
                         <ul class="list-unstyled">
-                            <li><a href="{{ url('/') }}">Home</a></li>
-                            <li><a href="{{ url('/konsultasi-karir') }}">Konsultasi Karir</a></li>
-                            <li><a href="{{ url('/lowongan-kerja') }}">Lowongan Kerja</a></li>
-                            <li><a href="{{ url('/status-lamaran') }}">Status Lamaran Kerja</a></li>
-                            <li><a href="{{ url('/dokumen-lamaran') }}">Dokumen Lamaran</a></li>
+                            <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="{{ route('daftar_mentor') }}">Konsultasi Karir</a></li>
+                            <li><a href="{{ route('daftar_lowongan_kerja') }}">Lowongan Kerja</a></li>
+                            <li><a href="{{ route('status_lamaran_kerja') }}">Status Lamaran Kerja</a></li>
+                            <li><a href="{{ route('dokumen_lamaran_kerja') }}">Dokumen Lamaran</a></li>
                         </ul>
                     </div>
                 </div>
@@ -146,12 +147,17 @@
                     <div class="footer-section">
                         <h5>Lainnya</h5>
                         <ul class="list-unstyled">
-                            <li><a href="#">Alur Melamar Kerja</a></li>
-                            <li><a href="#">Alur Konsultasi Karir</a></li>
-                            <li><a href="#">Benefit Konsultasi Karir</a></li>
-                            <li><a href="#">Mitra</a></li>
-                            <li><a href="#">Hubungi Kami</a></li>
-                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#alur-melamar">Alur Melamar Kerja</a></li>
+                            <li><a href="#alur-konsultasi-karir">Alur Konsultasi Karir</a></li>
+                            <li><a href="#benefit-konsultasi-karir">Benefit Konsultasi Karir</a></li>
+                            <li><a href="#mitra">Mitra Kami</a></li>
+                            <li>
+                                <a
+                                    href="https://api.whatsapp.com/send/?phone=628113955599&text=Hi%20Maxy%20Academy%21%20Mau%20nanya-nanya%20dong..%0D%0A%0D%0ANama%3A%0D%0AEmail%3A%0D%0AUniversitas%3A%0D%0ASemester%3A%0D%0AJurusan%3A%0D%0A%0D%0AThank%20you%21&type=phone_number&app_absent=0">
+                                    Hubungi Kami
+                                </a>
+                            </li>
+                            <li><a href="#FAQ">FAQs</a></li>
                         </ul>
                     </div>
                 </div>
@@ -193,7 +199,7 @@
                     <div class="header-line mt-3"></div>
                 </div>
                 <div class="col-12 text-center mb-3">
-                    <p class="mb-0">Copyrighted @ 2023 by Maxy Academy</p>
+                    <p class="mb-0">Copyrighted @ 2025 by Putri Indira</p>
                 </div>
             </div>
         </div>
@@ -222,6 +228,151 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
 
     @stack('scripts')
+
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float">
+        <a href="https://api.whatsapp.com/send/?phone=628113955599&text=Hi+Maxy+Academy%21+Mau+nanya-nanya+dong..%0D%0A%0D%0ANama%3A%0D%0AEmail%3A%0D%0AUniversitas%3A%0D%0ASemester%3A%0D%0AJurusan%3A%0D%0A%0D%0AThank+you%21&type=phone_number&app_absent=0"
+            class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span class="whatsapp-tooltip">Chat dengan kami!</span>
+        </a>
+    </div>
+
+    <!-- CSS untuk WhatsApp Floating Button -->
+    <style>
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #25D366;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .whatsapp-btn i {
+            font-size: 32px;
+            color: white;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            background-color: #333;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -5px;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-left: 5px solid #333;
+            border-bottom: 5px solid transparent;
+        }
+
+        .whatsapp-btn:hover .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+            right: 75px;
+        }
+
+        /* Animasi pulsing untuk menarik perhatian */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* Terapkan animasi */
+        .whatsapp-btn {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsif untuk perangkat mobile */
+        @media (max-width: 767px) {
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-btn {
+                width: 50px;
+                height: 50px;
+            }
+
+            .whatsapp-btn i {
+                font-size: 26px;
+            }
+        }
+    </style>
+
+    <!-- Script untuk efek tambahan (opsional) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menampilkan tombol setelah 2 detik
+            setTimeout(function() {
+                document.querySelector('.whatsapp-float').style.display = 'block';
+            }, 2000);
+
+            // Log ketika tombol diklik (opsional)
+            document.querySelector('.whatsapp-btn').addEventListener('click', function() {
+                console.log('WhatsApp button clicked');
+            });
+        });
+    </script>
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+    <!-- Add Font Awesome CDN in your head section -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
 
 </body>

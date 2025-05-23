@@ -19,13 +19,13 @@
                 <li class="nav-item">
                     <a href="{{ route('kategori_lowongan_kerja') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-list"></i>
-                        <p>Kategori Lowongan Kerja</p>
+                        <p>Kategori Lowongan</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('daftar_lowongan_kerja_perusahaan') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-magnifying-glass"></i>
-                        <p>Daftar Lowongan Kerja</p>
+                        <p>Lowongan Kerja</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -37,13 +37,13 @@
                 <li class="nav-item">
                     <a href="{{ route('dokumen_lamaran_maxians') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-forward"></i>
-                        <p>Dokumen Lamaran Maxians</p>
+                        <p>Dokumen Lamaran</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('daftar_pelamar_masuk') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-users"></i>
-                        <p>Daftar Pelamar Masuk</p>
+                        <p>Data Pelamar</p>
                     </a>
                 </li>
             </ul>
